@@ -11,8 +11,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -319,7 +321,7 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 057d817598c7dbfe36ec02be7307a404
+      Hash: 2f8148daf86aafa0359bc98f721f8481
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Main
@@ -506,4 +508,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: /home/maksim/Education/Diploma/GameForDiploma/Brainshtorm.apk
+  playerPath: /home/maksim/Education/Diploma/GameForDiploma/Brainshtorm_v0.2.apk

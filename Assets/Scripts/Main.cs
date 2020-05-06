@@ -21,7 +21,18 @@ public class Main : MonoBehaviour
    false_color = false;
 
    private void Update() {
-      if ()    
+      if (defoult_color){
+        HeadPanel.GetComponent<Image>().color = Color.Lerp(HeadPanel.GetComponent<Image>().color,
+        new Color(4 / 255.0f, 176 / 255.0f, 177 / 255.0f ),8*Time.deltaTime);
+      }   
+      if (true_color){
+        HeadPanel.GetComponent<Image>().color = Color.Lerp(HeadPanel.GetComponent<Image>().color,
+        new Color(2 / 255.0f, 167 / 255.0f, 98 / 255.0f ), 8 * Time.deltaTime);
+      } 
+      if (false_color){
+        HeadPanel.GetComponent<Image>().color = Color.Lerp(HeadPanel.GetComponent<Image>().color,
+        new Color(239 / 255.0f, 29 / 255.0f, 38 / 255.0f ),8*Time.deltaTime);
+      }
     }
    public void OnClickPlay()
    {
@@ -67,7 +78,7 @@ public class Main : MonoBehaviour
        yield break;
      }
      IEnumerator true_false(bool check_answer){
-      
+      defoult_color = false;
       for(int i = 0; i < answerbuttons.Length; i++){
          answerbuttons[i].interactable = false;
       }
@@ -88,7 +99,8 @@ public class Main : MonoBehaviour
          }
 
        if(check_answer){
-        true_false_text.gameObject.SetActive(true);
+         true_color = true;
+         true_false_text.gameObject.SetActive(true);
          true_false_icons.sprite = icons[0];
          true_false_text.text = "Правильна відповідь";
          yield return new WaitForSeconds(1);
@@ -97,8 +109,11 @@ public class Main : MonoBehaviour
          quation_list.RemoveAt(rand_quattion);
          yield return new WaitForSeconds(1f);
          Quation_Generate();
+         true_color = false;
+         defoult_color = true;
          yield break;
        }else {
+         false_color = true;
          true_false_text.gameObject.SetActive(true);
          true_false_icons.sprite = icons[1];
          true_false_text.text = "Відповідь не правильна";
@@ -106,6 +121,8 @@ public class Main : MonoBehaviour
          true_false_icons.gameObject.GetComponent<Animator>().SetTrigger("Out");
          true_false_text.gameObject.SetActive(false);
          HeadPanel.GetComponent<Animator>().SetTrigger("Out");
+         false_color = false;
+         defoult_color = true;
          yield break;
          }
      }  
