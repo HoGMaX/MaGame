@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Main : MonoBehaviour
 {
-   public Quations[] array_quation;
+   public CategoryList[] category_lyst = new CategoryList[2];
    public Text quations_text;
    List<object> quation_list;
    public Text[] answers_text;
@@ -19,6 +19,11 @@ public class Main : MonoBehaviour
    bool defoult_color = false, 
    true_color = false, 
    false_color = false;
+   public int categorys_int = 0;
+   public float timeleft = 60;
+   public Text timertext;
+   public float gametime;
+   public bool stateRunning = false;
 
    private void Update() {
       if (defoult_color){
@@ -33,10 +38,15 @@ public class Main : MonoBehaviour
         HeadPanel.GetComponent<Image>().color = Color.Lerp(HeadPanel.GetComponent<Image>().color,
         new Color(239 / 255.0f, 29 / 255.0f, 38 / 255.0f ),8*Time.deltaTime);
       }
+      if (stateRunning == true){
+      timeleft -= Time.deltaTime;
+      timertext.text = Mathf.Round(timeleft).ToString();
+
+     } 
     }
    public void OnClickPlay()
    {
-     quation_list = new List<object>(array_quation);
+     quation_list = new List<object>(category_lyst[categorys_int].quationslists);
      Quation_Generate();
      if(!HeadPanel.GetComponent<Animator>().enabled){
         HeadPanel.GetComponent<Animator>().enabled = true;  
@@ -57,6 +67,11 @@ public class Main : MonoBehaviour
           answers.RemoveAt(random_answers);          
           }
         StartCoroutine(anim_button_answers());
+        if(!timertext.gameObject.activeSelf){
+        timertext.gameObject.SetActive(true);
+        }
+          timeleft = 60;
+          stateRunning = true;
         }else print("Wictory");
         
    }
@@ -78,6 +93,11 @@ public class Main : MonoBehaviour
        yield break;
      }
      IEnumerator true_false(bool check_answer){
+       stateRunning = false;
+          if(!timertext.gameObject.activeSelf){
+            timertext.gameObject.SetActive(false);
+            }
+      stateRunning = true;
       defoult_color = false;
       for(int i = 0; i < answerbuttons.Length; i++){
          answerbuttons[i].interactable = false;
@@ -97,7 +117,6 @@ public class Main : MonoBehaviour
        }else {
          true_false_icons.gameObject.GetComponent<Animator>().SetTrigger("In");
          }
-
        if(check_answer){
          true_color = true;
          true_false_text.gameObject.SetActive(true);
@@ -128,14 +147,24 @@ public class Main : MonoBehaviour
      }  
     
    public void Answers_button(int index){
-       if(answers_text[index].text.ToString() == current_quation.answers[0]) StartCoroutine(true_false(true));
-       else StartCoroutine(true_false(false));
-
+       if(answers_text[index].text.ToString() == current_quation.answers[0]){
+         StartCoroutine(true_false(true));
+       }else StartCoroutine(true_false(false));
    }
+   public void Dropdown(int index){
+   categorys_int = index;
+  }
 }
+
+
 [System.Serializable]
 public class Quations 
 {
     public string quation;
     public string[] answers = new string [3];
+}
+[System.Serializable]
+public class CategoryList{
+  public string categoryName;
+  public Quations[] quationslists;
 }
