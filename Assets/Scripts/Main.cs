@@ -67,13 +67,17 @@ public class Main : MonoBehaviour
           answers.RemoveAt(random_answers);          
           }
         StartCoroutine(anim_button_answers());
-        if(!timertext.gameObject.activeSelf){
+        StartCoroutine(GameTimer());
+        }else print("Wictory");
+        
+   }
+   IEnumerator GameTimer(){
+     yield return new WaitForSeconds(2.3f);
+     if(!timertext.gameObject.activeSelf){
         timertext.gameObject.SetActive(true);
         }
           timeleft = 60;
           stateRunning = true;
-        }else print("Wictory");
-        
    }
      IEnumerator anim_button_answers(){
        yield return new WaitForSeconds(1);
@@ -93,11 +97,8 @@ public class Main : MonoBehaviour
        yield break;
      }
      IEnumerator true_false(bool check_answer){
-       stateRunning = false;
-          if(!timertext.gameObject.activeSelf){
-            timertext.gameObject.SetActive(false);
-            }
-      stateRunning = true;
+      stateRunning = false;
+      timertext.gameObject.SetActive(false);
       defoult_color = false;
       for(int i = 0; i < answerbuttons.Length; i++){
          answerbuttons[i].interactable = false;
@@ -147,6 +148,7 @@ public class Main : MonoBehaviour
      }  
     
    public void Answers_button(int index){
+
        if(answers_text[index].text.ToString() == current_quation.answers[0]){
          StartCoroutine(true_false(true));
        }else StartCoroutine(true_false(false));
