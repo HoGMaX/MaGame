@@ -22,10 +22,15 @@ ScriptsOnlyBuild:
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.Dropdown
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.Mask
+    - UnityEngine.UI.ScrollRect
+    - UnityEngine.UI.Scrollbar
     - UnityEngine.UI.Shadow
     - UnityEngine.UI.Text
+    - UnityEngine.UI.Toggle
   sceneClasses:
     Assets/Scenes/SampleScene.unity:
     - Class: 1
@@ -55,11 +60,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9836}
     - Class: 114
+      Script: {instanceID: 9838}
+    - Class: 114
       Script: {instanceID: 9876}
+    - Class: 114
+      Script: {instanceID: 10180}
     - Class: 114
       Script: {instanceID: 10208}
     - Class: 114
       Script: {instanceID: 10276}
+    - Class: 114
+      Script: {instanceID: 10452}
     - Class: 114
       Script: {instanceID: 10646}
     - Class: 114
@@ -67,7 +78,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11122}
     - Class: 114
+      Script: {instanceID: 11482}
+    - Class: 114
       Script: {instanceID: 11492}
+    - Class: 114
+      Script: {instanceID: 11508}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -319,7 +334,7 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 2f8148daf86aafa0359bc98f721f8481
+      Hash: 71b027e343dcf90966b8425fa7780f20
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Main
@@ -506,4 +521,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: /home/maksim/Education/Diploma/GameForDiploma/Brainshtorm_v0.3.apk
+  playerPath: /home/maksim/Education/Diploma/GameForDiploma/Brainshtorm_v0.4.apk

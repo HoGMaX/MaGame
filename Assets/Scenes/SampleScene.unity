@@ -720,7 +720,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -951}
-  m_SizeDelta: {x: 1000, y: 320}
+  m_SizeDelta: {x: 320, y: 320}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &296689780
 MonoBehaviour:
@@ -757,7 +757,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: ad23b69dfa7222358b4864b2175aa352, type: 3}
-    m_FontSize: 80
+    m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1728,6 +1728,7 @@ MonoBehaviour:
   timeleft: 60
   timertext: {fileID: 296689781}
   gametime: 0
+  stateRunning: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
